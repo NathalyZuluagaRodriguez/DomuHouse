@@ -1,18 +1,21 @@
-import bcrypt from 'bcryptjs';
-import { UserRepository } from '../repositories/UserRepository';
-import  User  from '../Dto/UserDto';
 
-export class UserServices {
-  static async login(email: string, password: string): Promise<User | null> {
-    const user = await UserRepository.findByEmail(email);
-    if (!user || !(await bcrypt.compare(password, user.password))) {
-      return null; // Usuario no encontrado o contraseña incorrecta
+import generateHash from '../Helpers/generateHash';
+import UserRepository from '../repositories/UserRepository';
+
+import User from '../Dto/UserDto';
+import Login from '../Dto/loginDto';
+
+
+class usuarioServi {
+    
+    static async register(usuario: User) {
+        usuario.password = await generateHash(usuario.password);
+        return await UserRepository.createUsuario(usuario);
     }
-    return user;
-  }
 
-  static async register(user: User): Promise<void> {
-    const hashedPassword = await bcrypt.hash(user.password, 10);
-    await UserRepository.create(new User(user.email, user.nombres, hashedPassword));
+    static async login(login: Login) {
+        return await UserRepository.buscarUsuario(login);
+    }
 }
-}
+
+export default usuarioServi;

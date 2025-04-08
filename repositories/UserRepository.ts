@@ -1,14 +1,45 @@
-import { pool } from '../config/config-db';
-import  User  from '../Dto/UserDto';
+import db from '../config/config-db';
+import bcrypt from "bcryptjs";
+import User from '../Dto/UserDto';
+import Login from '../Dto/loginDto';
 
-export class UserRepository {
-  static async findByEmail(email: string): Promise<User | null> {
-    const [rows]: any = await pool.query('SELECT * FROM Users WHERE email = ?', [email]);
-    return rows.length ? rows[0] : null;
+
+
+class usuarioRepo {
+
+  static async createUsuario( usuario:User){
+      const sql = 'CALL CrearUsuario(?, ?, ?, ?)';
+      const values = [usuario.nombre, usuario.email, usuario.telefono,usuario.password];
+      return db.execute(sql, values);
+  }
+    
+  static async buscarUsuario(login: Login) {
+    const sql = 'call loginUsuario(?)';
+    const values = [login.email];
+    const [rows]: any = await db.execute(sql, values);
+
+    if (rows.length > 0) {
+      const usuario = rows[0][0];
+      
+      console.log("🔍 Usuario encontrado:", usuario); // Verifica que la contraseña se esté recuperando correctamente
+
+      if (!usuario.password) {
+        throw new Error("El usuario no tiene contraseña almacenada");
+      }
+
+      // Compara la contraseña ingresada con el hash almacenado
+      const isPasswordValid = await bcrypt.compare(login.password, usuario.password);
+
+      if (isPasswordValid) {
+        return { logged: true, status: "Successful authentication", id: usuario.id_usuario };
+      }
+
+      return { logged: false, status: "Invalid password" };
+ 
+    }
+    return { logged: false, status: "Invalid username or password" };
+
   }
 
-  static async create(user: User): Promise<void> {
-    const { nombre, email, password } = user;
-    await pool.query('INSERT INTO Users (nombre, email, password) VALUES (?, ?, ?)', [nombre, email, password]);
-  }
 }
+export default usuarioRepo;

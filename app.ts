@@ -1,15 +1,25 @@
 import express from 'express';
-import dotenv from 'dotenv';
-import authRoutes from './routes/auth';
+import dotenv from "dotenv";
+import cors from "cors";
+import register from './routes/register';
+import login from './routes/login';
+import profile from './routes/profile';
+
 
 dotenv.config();
 
 const app = express();
+app.use(express.json());
+app.use(cors());
 
-app.use(express.json()); // ✅ Necesario para que el body funcione
-app.use('/auth', authRoutes); // ✅ Carga las rutas correctamente
+app.use('/register',register);
+app.use('/login',login);
+app.use('/profile', profile);
 
-const PORT = process.env.PORT || 3000;
+
+const PORT = process.env.PORT || 10101;
+
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
+
 });
