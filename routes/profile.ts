@@ -1,9 +1,9 @@
-import express  from "express";
-import verifyToken from "../middleware/VerifyToken";
-import profile from "../controllers/profileController";
+// import express  from "express";
+// import verifyToken from "../middleware/VerifyToken";
+// import profile from "../controllers/profileController";
 
-const route = express.Router();
+// const route = express.Router();
 
-route.get('/', verifyToken,profile)
+// route.get('/', verifyToken,profile)
 
-export default route;
+// export default route;
