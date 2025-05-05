@@ -1,15 +1,17 @@
 import db from '../config/config-db';
+import Property from '../Dto/propertyDto'
 
 export class PropertyRepository {
-  static async create(property: any) {
-    const sql = `CALL CrearPropiedad(?, ?, ?, ?, ?, ?)`;
+  static async create(property: Property) {
+    const sql = `CALL CrearPropiedad(?, ?, ?, ?, ?, ?, ?)`;
     const values = [
-      property.titulo,
+      property.direccion,
       property.descripcion,
+      property.imagen,
       property.precio,
-      property.ubicacion,
-      property.tipo, // venta/alquiler
-      property.usuario_id
+      property.estado,
+      property.id_persona,
+      property.id_tipo_propiedad
     ];
     const [rows]: any = await db.execute(sql, values);
     return rows;

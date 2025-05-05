@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-
 import User from "../Dto/UserDto";
 import UserService from "../services/UserServices";
 
@@ -8,7 +7,6 @@ let register = async (req: Request, res: Response) => {
     try {
       const {nombre,email,telefono,password } = req.body;
   
-      console.log("📩 Recibiendo datos del usuario:", req.body);
   
       const registerUser = await UserService.register(
         new User (nombre,email,telefono,password )

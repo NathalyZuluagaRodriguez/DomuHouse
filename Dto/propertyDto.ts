@@ -1,97 +1,50 @@
 class Property {
+    private _id: number;
+    private _direccion: string;
+    private _descripcion: string;
+    private _imagen: string; // Se espera base64 o url
+    private _precio: number;
+    private _estado: 'Vendida' | 'Alquilada' | 'Disponible';
+    private _id_persona: number;
+    private _id_tipo_propiedad: number;
 
-    private _id : number;
-    private _titulo : string;
-    private _descripcion : string;
-    private _precio : number;
-    private _ubicacion : string;
-    private _tipo : string;
-    private _usuario_id : number;
-    private _fecha_creacion : Date;
-
-    constructor (
-        id : number,
-        titulo : string,
-        descripcion : string,
-        precio : number,
-        ubicacion : string,
-        tipo : string,
-        usuario_id : number,
-        fecha_creacion : Date
+    constructor(
+        direccion: string,
+        descripcion: string,
+        imagen: string,
+        precio: number,
+        estado: 'Vendida' | 'Alquilada' | 'Disponible',
+        id_persona: number,
+        id_tipo_propiedad: number,
+        id_propiedad: number=0,
     ) {
-        this._id = id;
-        this._titulo = titulo;
+        this._id = id_propiedad;
+        this._direccion = direccion;
         this._descripcion = descripcion;
+        this._imagen = imagen;
         this._precio = precio;
-        this._ubicacion = ubicacion;
-        this._tipo = tipo;
-        this._usuario_id = usuario_id;
-        this._fecha_creacion = fecha_creacion;
+        this._estado = estado;
+        this._id_persona = id_persona;
+        this._id_tipo_propiedad = id_tipo_propiedad;
     }
 
-    get id(): number{
-        return this.id;
-    }
+    get id_propiedad(): number { return this._id; }
+    get direccion(): string { return this._direccion; }
+    get descripcion(): string { return this._descripcion; }
+    get imagen(): string { return this._imagen; }
+    get precio(): number { return this._precio; }
+    get estado(): 'Vendida' | 'Alquilada' | 'Disponible' { return this._estado; }
+    get id_persona(): number { return this._id_persona; }
+    get id_tipo_propiedad(): number { return this._id_tipo_propiedad; }
 
-    get titulo(): string{
-        return this.titulo;
-    }
-
-    get descripcion(): string{
-        return this.descripcion;
-    }
-
-    get precio(): number{
-        return this.precio;
-    }
-
-    get ubicacion(): string{
-        return this.ubicacion;
-    }
-
-    get tipo(): string{
-        return this.tipo;
-    }
-
-    get usuario_id(): number{
-        return this.usuario_id;
-    }
-
-    get fecha_creacion(): Date{
-        return this.fecha_creacion;
-    }
-
-
-    set id(id: number){
-        this._id = id;
-    }
-
-    set titulo(titulo: string){
-        this._titulo = titulo;
-    }
-
-    set descripcion(descripcion: string){
-        this._descripcion = descripcion;
-    }
-
-    set precio(precio: number){
-        this._precio = precio;
-    }
-
-    set ubicacion(ubicacion: string){
-        this._ubicacion = ubicacion;
-    }
-
-    set tipo(tipo: string){
-        this._tipo = tipo;
-    }
-
-    set usuario_id(usuario_id: number){
-        this._usuario_id = usuario_id;
-    }
-
-    set fecha_creacion(fecha_creacion: Date){
-        this._fecha_creacion = fecha_creacion;
-    }
-
+    set id_propiedad(value: number) { this._id = value; }
+    set direccion(value: string) { this._direccion = value; }
+    set descripcion(value: string) { this._descripcion = value; }
+    set imagen(value: string) { this._imagen = value; }
+    set precio(value: number) { this._precio = value; }
+    set estado(value: 'Vendida' | 'Alquilada' | 'Disponible') { this._estado = value; }
+    set id_persona(value: number) { this._id_persona = value; }
+    set id_tipo_propiedad(value: number) { this._id_tipo_propiedad = value; }
 }
+
+export default Property;

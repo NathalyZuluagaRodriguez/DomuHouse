@@ -2,7 +2,7 @@ import db from '../config/config-db';
 import bcrypt from "bcryptjs";
 import User from '../Dto/UserDto';
 import Login from '../Dto/loginDto';
-
+import Agent from '../Dto/AgentsDto';
 
 
 class usuarioRepo {
@@ -11,6 +11,26 @@ class usuarioRepo {
       const sql = 'CALL CrearUsuario(?, ?, ?, ?)';
       const values = [usuario.nombre, usuario.email, usuario.telefono,usuario.password];
       return db.execute(sql, values);
+  }
+
+  static async createAgente(agente: Agent) {
+    const sql = 'CALL CrearAgente(?, ?, ?, ?, ?, ?,?)';
+    const values = [
+      agente.nombre,
+      agente.apellido,
+      agente.email,
+      agente.telefono,
+      agente.password,
+      agente.inmobiliariaId,
+      agente.id_rol
+    ];
+    try {
+      const [rows]: any = await db.execute(sql, values); // 👈 await y desestructuración
+      return rows;
+    } catch (error) {
+      console.error("❌ Error ejecutando procedimiento CrearAgente:", error);
+      throw error;
+    }
   }
     
   static async buscarUsuario(login: Login) {
