@@ -4,8 +4,8 @@ import cors from "cors";
 import register from './routes/register';
 import login from './routes/login';
 import visit from './routes/visit';
+import agentRoutes   from './routes/agent'
 import PropertyRoutes from './routes/Property';
-import registerAgent from './controllers/registerAgentController';
 
 
 dotenv.config();
@@ -15,10 +15,10 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/register',register);
-app.use('propiedad', PropertyRoutes);
+app.use('/registro-propiedad',PropertyRoutes);
 app.use('/login',login);
 app.use('/visit',visit)
-app.use(registerAgent); 
+app.use('/agentes', agentRoutes); 
 
 const PORT = process.env.PORT || 10101;
 

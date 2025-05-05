@@ -3,6 +3,6 @@ import registerProperty from "../controllers/propertyController"
 
 const router = express.Router();
 
-router.post("/registro-propiedad", registerProperty);
+router.post("/", registerProperty);
 
 export default router;

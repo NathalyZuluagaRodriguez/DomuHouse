@@ -6,7 +6,7 @@ class propertyServi {
      static async registerProperty(property: Property) {
         try {
             console.log("🏠 Propiedad recibida en servicio:", property);
-            return await PropertyRepository.create(property);
+            return await PropertyRepository.CreateProperty(property);
         } catch (error) {
             console.error('Error al registrar propiedad:', error);
             throw new Error('No se pudo registrar la propiedad');

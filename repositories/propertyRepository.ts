@@ -2,7 +2,7 @@ import db from '../config/config-db';
 import Property from '../Dto/propertyDto'
 
 export class PropertyRepository {
-  static async create(property: Property) {
+  static async CreateProperty(property: Property) {
     const sql = `CALL CrearPropiedad(?, ?, ?, ?, ?, ?, ?)`;
     const values = [
       property.direccion,

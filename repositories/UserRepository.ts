@@ -25,7 +25,7 @@ class usuarioRepo {
       agente.id_rol
     ];
     try {
-      const [rows]: any = await db.execute(sql, values); // 👈 await y desestructuración
+      const [rows]: any = await db.execute(sql, values); 
       return rows;
     } catch (error) {
       console.error("❌ Error ejecutando procedimiento CrearAgente:", error);
