@@ -3,10 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import register from './routes/register';
 import login from './routes/login';
-import visit from './routes/visit';
-import rolesRoutes from './routes/roles';
-import searchRoutes from './routes/searchProperty';
-import agendaRoutes from './routes/Agenda';
+import authRoutes from './routes/auth';
 
 
 dotenv.config();
@@ -17,11 +14,7 @@ app.use(cors());
 
 app.use('/register',register);
 app.use('/login',login);
-app.use('/visit',visit)
-app.use('/roles', rolesRoutes);
-app.use('/', searchRoutes);
-app.use('/agenda', agendaRoutes);
-
+app.use('/auth', authRoutes);
 
 
 const PORT = process.env.PORT || 10101;

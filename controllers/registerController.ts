@@ -6,12 +6,12 @@ import UserService from "../services/UserServices";
 
 let register = async (req: Request, res: Response) => {
     try {
-      const {nombre,email,telefono,password } = req.body;
+      const {nombre, apellido, email, telefono, password, id_rol } = req.body;
   
       console.log("📩 Recibiendo datos del usuario:", req.body);
   
       const registerUser = await UserService.register(
-        new User (nombre,email,telefono,password )
+        new User (nombre,apellido,email,telefono,password,id_rol )
       );
   
       console.log("✅ Usuario registrado con éxito ");
