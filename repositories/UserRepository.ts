@@ -21,7 +21,7 @@ class usuarioRepo {
       agente.email,
       agente.telefono,
       agente.password,
-      agente.inmobiliariaId,
+      agente.id_inmobiliaria,
       agente.id_rol
     ];
     try {

@@ -14,6 +14,23 @@ export class PropertyRepository {
       property.id_tipo_propiedad
     ];
     const [rows]: any = await db.execute(sql, values);
+    return rows; 
+  }
+
+  static async getAll() {
+    const sql = `SELECT * FROM propiedad`;
+    const [rows]: any = await db.execute(sql);
     return rows;
   }
+
+  static async getById(id: number) {
+    const sql = `SELECT * FROM propiedad WHERE id_propiedad = ?`;
+    const [rows]: any = await db.execute(sql, [id]);
+    
+    console.log("Resultado de la consulta por ID:", rows);
+    
+    return rows.length > 0 ? rows[0] : null;
+}
+
+
 }
