@@ -6,6 +6,7 @@ import login from './routes/login';
 import visit from './routes/visit';
 import agentRoutes   from './routes/agent'
 import PropertyRoutes from './routes/Property';
+import invitacionRoutes from './routes/invitate';
 
 
 dotenv.config();
@@ -18,7 +19,8 @@ app.use('/register',register);
 app.use('/registro-propiedad',PropertyRoutes);
 app.use('/login',login);
 app.use('/visit',visit)
-app.use('/agentes', agentRoutes); 
+app.use('/agentes', agentRoutes);
+app.use('/api/invitacion', invitacionRoutes); 
 
 const PORT = process.env.PORT || 10101;
 
