@@ -41,5 +41,11 @@ class usuarioRepo {
 
   }
 
+  static async actualizarContrasena(email: string, nuevaContrasena: string) {
+    const sql = 'CALL sp_actualizar_contrasena(?, ?)';
+    const values = [email, nuevaContrasena];
+    return db.execute(sql, values);
+  }
+
 }
 export default usuarioRepo;

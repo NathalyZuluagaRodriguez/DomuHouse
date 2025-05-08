@@ -1,4 +1,3 @@
-
 import generateHash from '../Helpers/generateHash';
 import UserRepository from '../repositories/UserRepository';
 
