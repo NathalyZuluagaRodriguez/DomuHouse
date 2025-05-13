@@ -7,7 +7,7 @@ import visit from './routes/visit';
 import agentRoutes   from './routes/agent'
 import PropertyRoutes from './routes/Property';
 import invitacionRoutes from './routes/invitate';
-
+import agentRoute from './routes/agent';
 
 dotenv.config();
 
@@ -21,7 +21,7 @@ app.use('/login',login);
 app.use('/visit',visit)
 app.use('/agentes', agentRoutes);
 app.use('/api/invitacion', invitacionRoutes); 
-
+app.use('/api/agent', agentRoute);
 const PORT = process.env.PORT || 10101;
 
 app.listen(PORT, () => {

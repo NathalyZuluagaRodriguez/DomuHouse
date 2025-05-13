@@ -6,7 +6,7 @@ class Agent {
     private _telefono: string,
     private _password: string,
     private _id_inmobiliaria: number,
-    public _id_rol: number
+    public _id_rol: number = 2
   ) {}
 
   get nombre() { return this._nombre; }
