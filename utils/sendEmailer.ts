@@ -1,7 +1,5 @@
 import nodemailer from 'nodemailer';
 
-
-
 export const sendInvitationEmail = async (to: string, token: string) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -22,9 +20,26 @@ export const sendInvitationEmail = async (to: string, token: string) => {
      <pre style="background:#f4f4f4;padding:10px;border-radius:5px">${token}</pre>
     
     ` 
-   
-      
   });
 
   console.log('Correo de invitación enviado:', info.messageId);
 };
+
+const sendEmailer = async (to: string, subject: string, text: string) => {
+    const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS,
+        },
+    });
+
+    await transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to,
+        subject,
+        text,
+    });
+};
+
+export default sendEmailer;

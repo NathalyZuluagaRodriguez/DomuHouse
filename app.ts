@@ -8,6 +8,7 @@ import agentRoutes   from './routes/agent'
 import PropertyRoutes from './routes/Property';
 import invitacionRoutes from './routes/invitate';
 import agentRoute from './routes/agent';
+import inmobiliariaRoutes  from "./routes/inmobiliaria";
 
 dotenv.config();
 
@@ -20,11 +21,13 @@ app.use('/registro-propiedad',PropertyRoutes);
 app.use('/login',login);
 app.use('/visit',visit)
 app.use('/agentes', agentRoutes);
-app.use('/api/invitacion', invitacionRoutes); 
+app.use('/api/invitacion', invitacionRoutes);   
 app.use('/api/agent', agentRoute);
+app.use("/api", inmobiliariaRoutes );
 const PORT = process.env.PORT || 10101;
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 
 });
+ 
