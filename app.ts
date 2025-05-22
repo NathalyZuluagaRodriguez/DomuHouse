@@ -6,6 +6,7 @@ import login from './routes/login';
 import authRoutes from './routes/auth';
 import  logout  from './routes/logout';
 import independienteRoutes from './routes/independiente';
+import propiedadRoutes from './routes/propiedadRoutes';
 
 
 dotenv.config();
@@ -19,6 +20,7 @@ app.use('/auth',login);
 app.use('/auth', authRoutes);
 app.use('/auth',logout);
 app.use('/independiente', independienteRoutes);
+app.use('/api/admin', propiedadRoutes);
 
 
 const PORT = process.env.PORT || 10101;
