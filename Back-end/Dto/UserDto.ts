@@ -1,18 +1,21 @@
 class User {
 
   private _nombre: string;
-  private _email: string;
+  private _apellido: string;
+  private _correo: string;
   private _telefono: string;
   private _Password: string;
 
   constructor(
       nombre: string,
-      email: string,
+      apellido: string,
+      correo: string,
       telefono: string,
       password: string
   ) {
       this._nombre = nombre;
-      this._email = email;
+      this._apellido = apellido;
+      this._correo = correo;
       this._telefono = telefono;
       this._Password = password;
   }
@@ -21,8 +24,11 @@ class User {
   get nombre(): string {
       return this._nombre;
   }
-  get email(): string {
-      return this._email;
+  get apellido():string {
+        return this._apellido;
+  }
+  get correo(): string {
+      return this._correo;
   }
 
   get telefono(): string {
@@ -37,8 +43,11 @@ class User {
   set nombre(nombre: string) {
       this._nombre = nombre;
   }   
-  set email(email: string) {
-      this._email = email;
+  set apellido(apellido: string){
+    this._apellido = apellido
+  }
+  set correo(correo: string) {
+      this._correo = correo;
   }
 
   set telefono(telefono: string) {

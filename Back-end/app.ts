@@ -16,6 +16,7 @@ import  ventasAlquileresRoute  from './routes/agentRoutes'
 import reporteRoutes from './routes/agentRoutes';
 import reportesRoute from './routes/reportesPropRoutes';
 import busquedaRoutes from './routes/searchProperty'; 
+import register from './routes/register';
 
  
 dotenv.config();
@@ -40,6 +41,7 @@ app.use("/api", ventasAlquileresRoute);
 app.use(reporteRoutes);
 app.use('/api/reportes', reportesRoute);
 app.use('/busqueda', busquedaRoutes);
+app.use('/register',register);
 
 
 
@@ -51,6 +53,7 @@ if (!process.env.GEMINI_API_KEY) {
 
 
 // Middleware
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

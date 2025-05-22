@@ -8,9 +8,9 @@ import Agent from '../Dto/AgentsDto';
 
 class usuarioRepo {
 
-  static async createUsuario( usuario:User){
-      const sql = 'CALL CrearUsuario(?, ?, ?, ?)';
-      const values = [usuario.nombre, usuario.email, usuario.telefono,usuario.password];
+ static async createUsuario( Persona:User){
+    const sql = 'CALL CrearUsuario(?, ?, ?, ?, ?, ?)';
+      const values = [Persona.nombre,Persona.apellido,Persona.telefono, Persona.correo,Persona.password, 2];
       return db.execute(sql, values);
   }
 
