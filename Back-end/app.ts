@@ -17,6 +17,7 @@ import reporteRoutes from './routes/agentRoutes';
 import reportesRoute from './routes/reportesPropRoutes';
 import busquedaRoutes from './routes/searchProperty'; 
 import register from './routes/register';
+import propiedadesRoutes  from './routes/propiedadRoutes';
 
  
 dotenv.config();
@@ -42,6 +43,7 @@ app.use(reporteRoutes);
 app.use('/api/reportes', reportesRoute);
 app.use('/busqueda', busquedaRoutes);
 app.use('/register',register);
+app.use('/api/propiedades', propiedadesRoutes)
 
 
 

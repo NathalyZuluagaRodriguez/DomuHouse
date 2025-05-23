@@ -12,7 +12,7 @@ export const Button = ({name, content, Route, className}) => {
 
   return (
     <>
-    <button  className={className} 
+    <button className={className} 
       onClick={handleClick}
       >
         {name}
